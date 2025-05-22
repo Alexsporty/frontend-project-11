@@ -1,12 +1,14 @@
 {
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.6"
+    "bootstrap": "^5.3.6",
+    "on-change": "^5.0.1",
+    "yup": "^1.6.1"
   },
   "name": "@hexlet/code",
   "description": "Учебный проект от Hexlet. Frontend проект №11",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "autoprefixer": "^10.4.21",
