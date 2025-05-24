@@ -1,14 +1,14 @@
+import './scss/styles.scss';
+import 'bootstrap'; 
 import render from "./view.js";
 import validateUrl from "./validate.js";
 import addUrl from "./addUrl.js";
 import i18next from "./initI18next.js";
 
 const state = {
-  form: {
-    valid: true,
-    error: null,
-  },
+  form: { valid: true, error: null },
   feeds: [],
+  posts: [],
 };
 
 const elements = {
@@ -16,6 +16,7 @@ const elements = {
   input: document.querySelector('input[name="rss"]'),
   feedback: document.querySelector(".feedback"),
   feeds: document.querySelector(".feeds"),
+  posts: document.querySelector(".posts"),
 };
 
 document.querySelector("h1").textContent = i18next.t("title");

@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import validateUrl from "./validate.js";
+import fetchRss from "./parser.js";
 
 const addUrl = (watchedState) => {
   const form = document.querySelector("form");
@@ -13,13 +14,15 @@ const addUrl = (watchedState) => {
 
     validateUrl(inputValue, watchedState.feeds)
       .then(() => {
-        console.log("URL валиден и не дублируется");
-        watchedState.feeds.push(inputValue);
-        watchedState.form.valid = true;
-        watchedState.form.error = null;
+        fetchRss(inputValue).then(({ feed, posts }) => {
+          watchedState.feeds.push(feed);
+          watchedState.posts.push(...posts);
+          watchedState.form.valid = true;
+          watchedState.form.error = null;
 
-        form.reset();
-        input.focus();
+          form.reset();
+          input.focus();
+        });
       })
       .catch((err) => {
         console.log("Ошибка валидации", err.message);
