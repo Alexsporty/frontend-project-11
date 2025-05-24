@@ -1,11 +1,12 @@
 import onChange from "on-change";
+import i18next from "i18next";
 
 // функция отрисовывает список
 const render = (elements, state) => {
   const watchedState = onChange(state, (path, value) => {
     if (path === "form.error") {
       const feedback = elements.feedback;
-      feedback.textContent = value;
+      feedback.textContent = value ? i18next.t(value) : "";
       feedback.classList.toggle("text-danger", !!value);
     }
     if (path === "form.valid") {

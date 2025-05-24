@@ -1,14 +1,20 @@
 import * as yup from "yup";
 
-// функция которая проверяет валидность url и дубли url
+yup.setLocale({
+  string: {
+    url: "errors.invalidUrl",
+  },
+  mixed: {
+    required: "errors.required",
+    notOneOf: "errors.duplicate",
+  },
+});
+
 const validateUrl = (url, feeds) => {
   const rssSchema = yup.object({
-    url: yup
-      .string()
-      .url("Введите коректный url")
-      .required("Поле обязательно для заполнения")
-      .notOneOf(feeds, "RSS уже существует"),
+    url: yup.string().url().required().notOneOf(feeds),
   });
   return rssSchema.validate({ url });
 };
+
 export default validateUrl;

@@ -17,7 +17,6 @@ const addUrl = (watchedState) => {
         watchedState.feeds.push(inputValue);
         watchedState.form.valid = true;
         watchedState.form.error = null;
-        console.log(watchedState.feeds);
 
         form.reset();
         input.focus();
