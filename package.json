@@ -27,8 +27,9 @@
     "vite": "^6.3.5"
   },
   "scripts": {
-    "start": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "serve dist"
   },
   "author": "",
   "license": "ISC"
