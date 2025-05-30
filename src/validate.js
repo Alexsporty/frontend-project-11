@@ -11,8 +11,9 @@ yup.setLocale({
 });
 
 const validateUrl = (url, feeds) => {
+  const existingUrl = feeds.map(feed => feed.url)
   const rssSchema = yup.object({
-    url: yup.string().url().required().notOneOf(feeds),
+    url: yup.string().url().required().notOneOf(existingUrl),
   });
   return rssSchema.validate({ url });
 };

@@ -5,6 +5,7 @@ import validateUrl from "./validate.js";
 import addUrl from "./addUrl.js";
 import i18next from "./initI18next.js";
 
+
 const state = {
   form: { valid: true, error: null },
   feeds: [],

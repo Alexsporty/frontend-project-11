@@ -11,12 +11,12 @@ const fetchRss = (url) => {
     .then((response) => {
       const xmlString = response.data.contents;
       const doc = parser.parseFromString(xmlString, "text/xml");
-
       const channel = doc.querySelector("channel");
       const feed = {
         id: generateId(),
         title: channel.querySelector("title").textContent,
         description: channel.querySelector("description").textContent,
+        url,
       };
 
       const posts = [];
@@ -27,6 +27,7 @@ const fetchRss = (url) => {
           title: item.querySelector("title").textContent,
           link: item.querySelector("link").textContent,
         });
+        
       });
       return { feed, posts };
     })
@@ -35,5 +36,6 @@ const fetchRss = (url) => {
       throw error;
     });
 };
+
 
 export default fetchRss;

@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import validateUrl from "./validate.js";
 import fetchRss from "./parser.js";
+import updateFeeds from "./setTimeout.js";
 
 const addUrl = (watchedState) => {
   const form = document.querySelector("form");
@@ -20,9 +21,11 @@ const addUrl = (watchedState) => {
           watchedState.form.valid = true;
           watchedState.form.error = null;
 
+          updateFeeds(watchedState)
+          
           form.reset();
           input.focus();
-        });
+        });      
       })
       .catch((err) => {
         console.log("Ошибка валидации", err.message);

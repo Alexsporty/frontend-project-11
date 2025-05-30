@@ -10,7 +10,8 @@ export default defineConfig({
   },
   server: {
     port: 8080,
-    hot: true
+    hot: true,
+    open: true
   },
   build: {
     outDir: path.resolve(__dirname, 'dist'),
