@@ -22,12 +22,16 @@ const fetchRss = (url) => {
       const posts = [];
       const items = doc.querySelectorAll("item");
       items.forEach((item) => {
+        const rawDescription = item.querySelector('description').textContent;
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = rawDescription;
+        const cleanElement = tempElement.textContent;
         posts.push({
           id: generateId(),
           title: item.querySelector("title").textContent,
           link: item.querySelector("link").textContent,
+          description: cleanElement,
         });
-        
       });
       return { feed, posts };
     })

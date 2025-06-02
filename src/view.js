@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as bootstrap from "bootstrap";
 import onChange from "on-change";
 import i18next from "i18next";
 
@@ -30,9 +32,50 @@ const render = (elements, state) => {
       const postsContainer = elements.posts;
       postsContainer.innerHTML = "";
       value.forEach((post) => {
-        const postElem = document.createElement("div");
-        postElem.innerHTML = `<a href="${post.link}" target="_blank" rel="noopener noreferrer">${post.title}</a>`;
-        postsContainer.appendChild(postElem);
+        const postItem = document.createElement("li");
+        postItem.classList.add(
+          "list-group-item",
+          "d-flex",
+          "justify-content-between",
+          "align-items-start"
+        );
+
+        const link = document.createElement("a");
+        link.setAttribute("href", post.link);
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+        link.textContent = post.title;
+
+        const isRead = watchedState.ui.readPostId.has(post.id);
+        link.classList.add(isRead ? "fw-normal" : "fw-bold");
+
+        const previewBtn = document.createElement("button");
+        previewBtn.textContent = "Просмотр";
+        previewBtn.classList.add("btn", "btn-outline-primary", "btn-sm");
+        previewBtn.setAttribute("data-id", post.id);
+        previewBtn.setAttribute("type", "button");
+
+        previewBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const { id } = e.target.dataset;
+          const post = watchedState.posts.find((p) => p.id === id);
+
+          watchedState.ui.readPostId.add(id);
+
+          const modalTitle = document.querySelector(".modal-title");
+          const modalBody = document.querySelector(".modal-body");
+          const modalLink = document.querySelector(".full-article");
+
+          modalTitle.textContent = post.title;
+          modalBody.textContent = post.description;
+          modalLink.href = post.link;
+
+          const modal = new bootstrap.Modal(document.getElementById("modal"));
+          modal.show();
+        });
+        postItem.appendChild(link);
+        postItem.appendChild(previewBtn);
+        postsContainer.appendChild(postItem);
       });
     }
   });

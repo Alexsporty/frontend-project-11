@@ -10,6 +10,9 @@ const state = {
   form: { valid: true, error: null },
   feeds: [],
   posts: [],
+  ui: {
+    readPostId: new Set(),
+  },
 };
 
 const elements = {

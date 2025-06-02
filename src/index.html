@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
     <title>RSS агрегатор</title>
   </head>
   <body>
@@ -10,7 +14,7 @@
       <p class="text-muted mb-3">
         Начните читать RSS сегодня! Это легко, это красиво.
       </p>
-    
+
       <form class="d-flex gap-2 mb-3">
         <input
           type="url"
@@ -21,13 +25,44 @@
         />
         <button type="submit" class="btn btn-primary">Добавить</button>
       </form>
-    
+
       <div class="feedback text-danger mb-3"></div>
-    
+
       <ul class="list-group feeds"></ul>
       <ul class="list-group posts mt-3"></ul>
     </div>
-    
+    <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <a
+              href="#"
+              class="btn btn-primary full-article"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Читать полностью</a
+            >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="main.js"></script>
   </body>
 </html>
