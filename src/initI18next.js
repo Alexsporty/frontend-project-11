@@ -3,6 +3,9 @@ import i18next from 'i18next';
 const resources = {
   ru: {
     translation: {
+      messages: {
+        success: 'RSS успешно загружен',
+      },
       title: 'RSS агрегатор',
       subtitle: 'Начните читать RSS сегодня! Это легко, это красиво.',
       add: 'Добавить',
@@ -12,7 +15,6 @@ const resources = {
         required: 'Поле обязательно для заполнения',
         duplicate: 'RSS уже существует',
       },
-      success: 'RSS успешно загружен',
     },
   },
 };

@@ -22,16 +22,18 @@
               <div class="col">
                 <div class="form-floating">
                   <input
-                    type="url"
+                    id="url-input"
                     autofocus
+                    type="text"
+                    required
+                    name="url"
+                    aria-label="url"
                     class="form-control w-100"
                     placeholder="Ссылка RSS"
-                    name="rss"
-                    aria-label="url"
-                    autocomplete="on"
+                    autocomplete="off"
                   />
                   <label for="url-input">Ссылка RSS</label>
-                </div>
+                </div>  
               </div>
               <div class="col-auto">
                 <button
@@ -44,8 +46,8 @@
               </div>
             </div>
           </form>
-          <!-- <p class="feedback m-0 position-absolute small text-success"></p> -->
-          <p class="feedback m-0 position-absolute small mb-3"></p>
+
+          <div class="feedback text-danger mb-3"></div>
         </div>
       </div>
     </section>
