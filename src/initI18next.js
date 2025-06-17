@@ -11,7 +11,7 @@ const resources = {
       add: 'Добавить',
       inputPlaceholder: 'Ссылка RSS',
       errors: {
-        url: 'Введите корректный URL',
+        url: 'Ссылка должна быть валидным URL',
         required: 'Поле обязательно для заполнения',
         duplicate: 'RSS уже существует',
       },
