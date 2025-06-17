@@ -1,3 +1,0 @@
-http://www.lgz.ru/rss.xml
-https://sochi24.tv/feed/rss
-http://habrahabr.ru/rss/best/weekly/
