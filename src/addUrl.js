@@ -11,7 +11,7 @@ const addUrl = (watchedState) => {
     e.preventDefault();
 
     const inputValue = input.value.trim();
-
+    console.log("Ввод пользователя:", inputValue);
     validateUrl(inputValue, watchedState.feeds)
       .then(() => {
         const normalizedUrl = normalizeUrl(inputValue);

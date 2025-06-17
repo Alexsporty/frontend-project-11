@@ -5,13 +5,16 @@ const generateId = () =>
   Date.now().toString() + Math.random().toString(36).slice(2, 9);
 
 const fetchRss = (url) => {
-  const proxyUrl = `https://allorigins.hexlet.app/get?url=${encodeURIComponent(url)}`;
+  const proxyUrl = `https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`;
   return axios
     .get(proxyUrl)
     .then((response) => {
       const xmlString = response.data.contents;
       const doc = parser.parseFromString(xmlString, "text/xml");
       const channel = doc.querySelector("channel");
+      console.log("XML из ответа:", xmlString);
+      console.log("channel найден?", !!doc.querySelector("channel"));
+
       const feed = {
         id: generateId(),
         title: channel.querySelector("title").textContent,
