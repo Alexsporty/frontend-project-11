@@ -13,7 +13,7 @@ const updateFeeds = (watchedState) => {
         })
     });
     Promise.all(promises).finally(() => {
-        setTimeout(() => updateFeeds(watchedState), 10000)
+        setTimeout(() => updateFeeds(watchedState), 5000)
     })
 }
 export default updateFeeds

@@ -12,8 +12,6 @@ const fetchRss = (url) => {
       const xmlString = response.data.contents;
       const doc = parser.parseFromString(xmlString, "text/xml");
       const channel = doc.querySelector("channel");
-      console.log("XML из ответа:", xmlString);
-      console.log("channel найден?", !!doc.querySelector("channel"));
 
       const feed = {
         id: generateId(),
