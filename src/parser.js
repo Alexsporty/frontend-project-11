@@ -10,9 +10,13 @@ const fetchRss = (url) => {
     .get(proxyUrl)
     .then((response) => {
       const xmlString = response.data.contents;
-      const doc = parser.parseFromString(xmlString, "text/xml");
+      const doc = parser.parseFromString(xmlString, "application/xml");
       const channel = doc.querySelector("channel");
 
+      if (!channel) {
+        throw new Error("errors.invalidRss");
+      }
+      
       const feed = {
         id: generateId(),
         title: channel.querySelector("title").textContent,

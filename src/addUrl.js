@@ -21,7 +21,7 @@ const addUrl = (watchedState) => {
           );
 
           if (!alreadyExists) {
-            watchedState.feeds.push(feed);
+            watchedState.feeds = [...watchedState.feeds, feed];
           }
 
           const existingPostLinks = watchedState.posts.map((post) => post.link);
@@ -29,9 +29,9 @@ const addUrl = (watchedState) => {
             (post) => !existingPostLinks.includes(post.link)
           );
 
-          watchedState.posts.push(...newPosts);
-          watchedState.form.valid = true;
-          watchedState.form.error = null;
+          watchedState.posts = [...watchedState.posts, ...newPosts];
+          watchedState.form = { valid: true, error: null };
+
           updateFeeds(watchedState);
 
           form.reset();
@@ -40,8 +40,7 @@ const addUrl = (watchedState) => {
       })
       .catch((err) => {
         console.log("Ошибка валидации", err.message);
-        watchedState.form.valid = false;
-        watchedState.form.error = err.message;
+        watchedState.form = { valid: false, error: err.message}
       });
   });
 };
