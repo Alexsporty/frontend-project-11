@@ -12,7 +12,7 @@ const resources = {
         required: 'Поле обязательно для заполнения',
         duplicate: 'RSS уже существует',
         invalidRss: 'Ресурс не содержит валидный RSS',
-        networkError: 'Ошибка сети',
+        network: 'Ошибка сети',
       },
       messages: {
         success: 'RSS успешно загружен',

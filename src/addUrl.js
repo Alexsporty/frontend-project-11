@@ -42,12 +42,12 @@ const addUrl = (watchedState) => {
             input.focus();
           })
           .catch((err) => {
-            console.log("Ошибка сети", err.message);
-            watchedState.form = { error: "invalidRss" };
+            console.log("Ошибка валидации 1", err.message);
+            watchedState.form = { error: err.message };
           });
       })
       .catch((err) => {
-        console.log("Ошибка валидации", err.message);
+        console.log("Ошибка валидации 2", err.message);
         watchedState.form = { error: err.message };
       });
   });

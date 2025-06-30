@@ -1,5 +1,6 @@
 import axios from "axios";
 import i18next from "i18next";
+import { state } from "./state.js";
 const parser = new DOMParser();
 
 const generateId = () =>
@@ -15,7 +16,7 @@ const fetchRss = (url) => {
       const channel = doc.querySelector("channel");
 
       if (!channel) {
-        throw new Error(i18next.t("errors.invalidRss"));
+        throw new Error("invalidRss");
       }
 
       const feed = {
@@ -43,7 +44,10 @@ const fetchRss = (url) => {
     })
     .catch((error) => {
       console.error("Ошибка запроса", error);
-      throw new Error('errors.networkError');
+      if (axios.isAxiosError?.(error)) {
+        throw new Error("network");
+      }
+      throw error
     });
 };
 
