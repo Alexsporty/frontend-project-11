@@ -22,7 +22,6 @@ const addUrl = (watchedState) => {
             const alreadyExists = watchedState.feeds.some(
               (existing) => normalizeUrl(existing.url) === normalizedUrl
             );
-
             if (!alreadyExists) {
               watchedState.feeds = [...watchedState.feeds, feed];
             }
@@ -43,7 +42,7 @@ const addUrl = (watchedState) => {
             input.focus();
           })
           .catch((err) => {
-            console.log("Ошибка валидации", err.message);
+            console.log("Ошибка сети", err.message);
             watchedState.form = { error: "invalidRss" };
           });
       })

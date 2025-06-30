@@ -1,6 +1,5 @@
 import axios from "axios";
 import i18next from "i18next";
-import { state } from "./state.js";
 const parser = new DOMParser();
 
 const generateId = () =>
@@ -44,7 +43,7 @@ const fetchRss = (url) => {
     })
     .catch((error) => {
       console.error("Ошибка запроса", error);
-      throw new Error(error);
+      throw new Error('errors.networkError');
     });
 };
 
