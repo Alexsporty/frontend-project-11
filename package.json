@@ -10,7 +10,6 @@
   "name": "@hexlet/code",
   "description": "Учебный проект от Hexlet. Frontend проект №11",
   "version": "1.0.0",
-  "type": "module",
   "main": "main.js",
   "devDependencies": {
     "@eslint/create-config": "^1.9.0",
