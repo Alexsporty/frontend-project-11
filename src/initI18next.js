@@ -19,12 +19,12 @@ const resources = {
       },
     },
   },
-};
+}
 
 i18next.init({
   lng: 'ru',
   debug: true,
   resources,
-});
+})
 
-export default i18next;
+export default i18next

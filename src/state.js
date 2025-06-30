@@ -5,5 +5,5 @@ export const state = {
   ui: {
     readPostId: new Set(),
   },
-};
-console.log(state);
+}
+console.log(state)

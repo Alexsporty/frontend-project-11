@@ -10,13 +10,13 @@ const elements = {
   feedback: document.querySelector('.feedback'),
   feeds: document.querySelector('.feeds'),
   posts: document.querySelector('.posts'),
-};
+}
 
-document.querySelector('h1').textContent = i18next.t('title');
-document.querySelector('p.lead').textContent = i18next.t('subtitle');
-document.querySelector('button[type="submit"]').textContent = i18next.t('add');
-elements.input.placeholder = i18next.t('inputPlaceholder');
+document.querySelector('h1').textContent = i18next.t('title')
+document.querySelector('p.lead').textContent = i18next.t('subtitle')
+document.querySelector('button[type="submit"]').textContent = i18next.t('add')
+elements.input.placeholder = i18next.t('inputPlaceholder')
 
-const watchedState = render(elements, state);
+const watchedState = render(elements, state)
 
-addUrl(watchedState);
+addUrl(watchedState)
