@@ -1,6 +1,6 @@
-import * as bootstrap from 'bootstrap';
-import onChange from 'on-change';
-import i18next from 'i18next';
+import * as bootstrap from 'bootstrap'
+import onChange from 'on-change'
+import i18next from 'i18next'
 
 // функция отрисовывает список
 const render = (elements, state) => {

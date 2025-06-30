@@ -1,4 +1,4 @@
-import fetchRss from './parser.js';
+import fetchRss from './parser.js'
 
 const updateFeeds = (watchedState) => {
   const promises = watchedState.feeds.map((feed) => {

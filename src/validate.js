@@ -1,5 +1,5 @@
-import * as yup from 'yup';
-import normalizeUrl from './normalizeUrl.js';
+import * as yup from 'yup'
+import normalizeUrl from './normalizeUrl.js'
 
 const validateUrl = (url, feeds) => {
   const normalizedInput = normalizeUrl(url);

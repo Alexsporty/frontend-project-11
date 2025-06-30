@@ -1,7 +1,7 @@
-import validateUrl from './validate.js';
-import fetchRss from './parser.js';
-import updateFeeds from './setTimeout.js';
-import normalizeUrl from './normalizeUrl.js';
+import validateUrl from './validate.js'
+import fetchRss from './parser.js'
+import updateFeeds from './setTimeout.js'
+import normalizeUrl from './normalizeUrl.js'
 
 const addUrl = (watchedState) => {
   const form = document.querySelector('form');

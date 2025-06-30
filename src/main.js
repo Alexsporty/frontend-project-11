@@ -1,8 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import render from './view.js';
-import addUrl from './addUrl.js';
-import i18next from './initI18next.js';
-import { state } from './state.js';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import render from './view.js'
+import addUrl from './addUrl.js'
+import i18next from './initI18next.js'
+import { state } from './state.js'
 
 const elements = {
   form: document.querySelector('form'),
