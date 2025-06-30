@@ -3,11 +3,11 @@ import fetchRss from './parser.js'
 import updateFeeds from './setTimeout.js'
 import normalizeUrl from './normalizeUrl.js'
 
-const addUrl = ( watchedState ) => {
+const addUrl = (watchedState) => {
   const form = document.querySelector('form')
   const input = form.elements.rss
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const inputValue = input.value.trim()
@@ -24,10 +24,10 @@ const addUrl = ( watchedState ) => {
             }
 
             const existingPostLinks = watchedState.posts.map(
-              post => post.link
+              post => post.link,
             )
             const newPosts = posts.filter(
-              post => !existingPostLinks.includes(post.link)
+              post => !existingPostLinks.includes(post.link),
             )
 
             watchedState.posts = [...watchedState.posts, ...newPosts]
@@ -38,12 +38,12 @@ const addUrl = ( watchedState ) => {
             form.reset()
             input.focus()
           })
-          .catch(err => {
+          .catch((err) => {
             console.log('Ошибка валидации 1', err.message)
             watchedState.form = { error: err.message }
           })
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Ошибка валидации 2', err.message)
         watchedState.form = { error: err.message }
       })
