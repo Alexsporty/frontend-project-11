@@ -147,8 +147,8 @@ test.describe('Item', () => {
   })
 
   test('should allow me to un-mark items as complete', async ({ page }) => {
-      // create a new todo locator
-      const newTodo = page.getByPlaceholder('What needs to be done?')
+    // create a new todo locator
+    const newTodo = page.getByPlaceholder('What needs to be done?')
 
     // Create two items.
     for (const item of TODO_ITEMS.slice(0, 2)) {

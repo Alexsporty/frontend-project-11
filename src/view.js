@@ -13,7 +13,7 @@ const render = (elements, state) => {
         feedback.textContent = i18next.t(`errors.${error}`)
         feedback.classList.remove('text-success')
         feedback.classList.add('text-danger')
-      } 
+      }
       else {
         feedback.textContent = i18next.t('messages.success')
         feedback.classList.remove('text-danger')
