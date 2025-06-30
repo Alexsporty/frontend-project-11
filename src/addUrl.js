@@ -3,7 +3,7 @@ import fetchRss from './parser.js'
 import updateFeeds from './setTimeout.js'
 import normalizeUrl from './normalizeUrl.js'
 
-const addUrl = watchedState => {
+const addUrl = ( watchedState ) => {
   const form = document.querySelector('form')
   const input = form.elements.rss
 
@@ -17,7 +17,7 @@ const addUrl = watchedState => {
         fetchRss(normalizedUrl)
           .then(({ feed, posts }) => {
             const alreadyExists = watchedState.feeds.some(
-              existing => normalizeUrl(existing.url) === normalizedUrl
+              existing => normalizeUrl(existing.url) === normalizedUrl,
             )
             if (!alreadyExists) {
               watchedState.feeds = [...watchedState.feeds, feed]
