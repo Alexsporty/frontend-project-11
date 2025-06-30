@@ -22,7 +22,7 @@ const render = (elements, state) => {
     if (path === 'feeds') {
       const feedsContainer = elements.feeds
       feedsContainer.innerHTML = ''
-      value.forEach((feed) => {
+      value.forEach(feed => {
         const feedElem = document.createElement('div')
         feedElem.innerHTML = `<h3>${feed.title}</h3><p>${feed.description}</p>`
         feedsContainer.appendChild(feedElem)
@@ -31,7 +31,7 @@ const render = (elements, state) => {
     if (path === 'posts') {
       const postsContainer = elements.posts
       postsContainer.innerHTML = ''
-      value.forEach((post) => {
+      value.forEach(post => {
         const postItem = document.createElement('li')
         postItem.classList.add(
           'list-group-item',
@@ -55,10 +55,10 @@ const render = (elements, state) => {
         previewBtn.setAttribute('data-id', post.id)
         previewBtn.setAttribute('type', 'button')
 
-        previewBtn.addEventListener('click', (e) => {
+        previewBtn.addEventListener('click', e => {
           e.preventDefault()
           const { id } = e.target.dataset
-          const post = watchedState.posts.find((p) => p.id === id)
+          const post = watchedState.posts.find(p => p.id === id)
 
           watchedState.ui.readPostId.add(id)
 

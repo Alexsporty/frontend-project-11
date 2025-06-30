@@ -1,4 +1,4 @@
-const normalizeUrl = (url) => {
+const normalizeUrl = url => {
   try {
     const normalizedUrl = new URL(url)
     return `${normalizedUrl.origin}${normalizedUrl.pathname.replace(/\/$/, '')}`

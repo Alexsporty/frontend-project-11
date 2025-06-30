@@ -1,28 +1,38 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import { defineConfig } from 'eslint/config';
-import stylistic from '@stylistic/eslint-plugin';
+import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
+import globals from 'globals'
+import { defineConfig } from 'eslint/config'
 
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js, '@stylistic': stylistic  },
-    extends: ['js/recommended'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    plugins: {
+      '@stylistic': stylistic,
+    },
     rules: {
-      '@stylistic/semi': 'off',
-      '@stylistic/quotes': 'off',
-      '@stylistic/comma-dangle': 'off',
-      '@stylistic/arrow-parens': 'off',
-      '@stylistic/no-multiple-empty-lines': 'off',
-      '@stylistic/brace-style': 'off',
-      '@stylistic/object-curly-spacing': 'off',
-      '@stylistic/indent': 'off',
-      '@stylistic/no-trailing-spaces': 'off',
-      '@stylistic/padded-blocks': 'off',
+      // базовые правила
+      ...js.configs.recommended.rules,
+
+      // стилистика (можно отключать или настраивать ниже)
+      'semi': ['error', 'never'],
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/comma-dangle': ['error', 'only-multiline'],
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
+      '@stylistic/no-trailing-spaces': 'error',
+      '@stylistic/padded-blocks': ['error', 'never'],
     },
   },
-  {
-    files: ['**/*.{js,mjs,cjs}'],
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
-  },
-]);
+])
+
