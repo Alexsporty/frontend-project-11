@@ -14,7 +14,6 @@ const addUrl = (watchedState) => {
     validateUrl(inputValue, watchedState.feeds)
       .then(() => {
         const normalizedUrl = normalizeUrl(inputValue);
-
         fetchRss(normalizedUrl)
           .then(({ feed, posts }) => {
             const alreadyExists = watchedState.feeds.some(

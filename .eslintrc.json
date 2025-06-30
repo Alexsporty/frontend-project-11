@@ -9,6 +9,11 @@
       "ecmaVersion": 12,
       "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+      "@stylistic/semi": "off",
+    "@stylistic/quotes": "off",
+    "@stylistic/comma-dangle": "off",
+    "@stylistic/no-multiple-empty-lines": "off",
+    "@stylistic/arrow-parens": "off"}
   }
   

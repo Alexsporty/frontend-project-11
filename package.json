@@ -32,7 +32,8 @@
     "kill-port": "lsof -ti :8080 | xargs kill -9",
     "dev": "npm run kill-port && vite",
     "build": "vite build",
-    "preview": "serve dist"
+    "preview": "serve dist",
+    "lint-fix": "eslint . --fix"
   },
   "author": "",
   "license": "ISC"
