@@ -6,13 +6,14 @@ import i18next from "i18next";
 const render = (elements, state) => {
   const watchedState = onChange(state, (path, value) => {
     if (path === "form") {
-      const { valid, error } = value;
+      const { error } = value;
       const feedback = elements.feedback;
+
       if (error) {
         feedback.textContent = i18next.t(`errors.${error}`);
         feedback.classList.remove("text-success");
         feedback.classList.add("text-danger");
-      } else if (valid) {
+      } else {
         feedback.textContent = i18next.t("messages.success");
         feedback.classList.remove("text-danger");
         feedback.classList.add("text-success");

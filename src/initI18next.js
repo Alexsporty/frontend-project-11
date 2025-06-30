@@ -11,6 +11,7 @@ const resources = {
         url: 'Ссылка должна быть валидным URL',
         required: 'Поле обязательно для заполнения',
         duplicate: 'RSS уже существует',
+        invalidRss: 'Ресурс не содержит валидный RSS',
       },
       messages: {
         success: 'RSS успешно загружен',

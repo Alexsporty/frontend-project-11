@@ -2,6 +2,8 @@ import validateUrl from "./validate.js";
 import fetchRss from "./parser.js";
 import updateFeeds from "./setTimeout.js";
 import normalizeUrl from "./normalizeUrl.js";
+import render from "./view.js";
+import { state } from "./state.js";
 
 const addUrl = (watchedState) => {
   const form = document.querySelector("form");
@@ -15,32 +17,39 @@ const addUrl = (watchedState) => {
       .then(() => {
         const normalizedUrl = normalizeUrl(inputValue);
 
-        fetchRss(normalizedUrl).then(({ feed, posts }) => {
-          const alreadyExists = watchedState.feeds.some(
-            (existing) => normalizeUrl(existing.url) === normalizedUrl
-          );
+        fetchRss(normalizedUrl)
+          .then(({ feed, posts }) => {
+            const alreadyExists = watchedState.feeds.some(
+              (existing) => normalizeUrl(existing.url) === normalizedUrl
+            );
 
-          if (!alreadyExists) {
-            watchedState.feeds = [...watchedState.feeds, feed];
-          }
+            if (!alreadyExists) {
+              watchedState.feeds = [...watchedState.feeds, feed];
+            }
 
-          const existingPostLinks = watchedState.posts.map((post) => post.link);
-          const newPosts = posts.filter(
-            (post) => !existingPostLinks.includes(post.link)
-          );
+            const existingPostLinks = watchedState.posts.map(
+              (post) => post.link
+            );
+            const newPosts = posts.filter(
+              (post) => !existingPostLinks.includes(post.link)
+            );
 
-          watchedState.posts = [...watchedState.posts, ...newPosts];
-          watchedState.form = { valid: true, error: null };
+            watchedState.posts = [...watchedState.posts, ...newPosts];
+            watchedState.form = { error: null };
 
-          updateFeeds(watchedState);
+            updateFeeds(watchedState);
 
-          form.reset();
-          input.focus();
-        });
+            form.reset();
+            input.focus();
+          })
+          .catch((err) => {
+            console.log("Ошибка валидации", err.message);
+            watchedState.form = { error: "invalidRss" };
+          });
       })
       .catch((err) => {
         console.log("Ошибка валидации", err.message);
-        watchedState.form = { valid: false, error: err.message}
+        watchedState.form = { error: err.message };
       });
   });
 };

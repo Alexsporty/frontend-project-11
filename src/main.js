@@ -1,18 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import render from "./view.js";
 import validateUrl from "./validate.js";
 import addUrl from "./addUrl.js";
 import i18next from "./initI18next.js";
-
-
-const state = {
-  form: { valid: true, error: null },
-  feeds: [],
-  posts: [],
-  ui: {
-    readPostId: new Set(),
-  },
-};
+import { state } from "./state.js";
 
 const elements = {
   form: document.querySelector("form"),

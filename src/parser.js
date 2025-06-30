@@ -1,4 +1,6 @@
 import axios from "axios";
+import i18next from "i18next";
+import { state } from "./state.js";
 const parser = new DOMParser();
 
 const generateId = () =>
@@ -14,9 +16,9 @@ const fetchRss = (url) => {
       const channel = doc.querySelector("channel");
 
       if (!channel) {
-        throw new Error("errors.invalidRss");
+        throw new Error(i18next.t("errors.invalidRss"));
       }
-      
+
       const feed = {
         id: generateId(),
         title: channel.querySelector("title").textContent,
@@ -27,8 +29,8 @@ const fetchRss = (url) => {
       const posts = [];
       const items = doc.querySelectorAll("item");
       items.forEach((item) => {
-        const rawDescription = item.querySelector('description').textContent;
-        const tempElement = document.createElement('div');
+        const rawDescription = item.querySelector("description").textContent;
+        const tempElement = document.createElement("div");
         tempElement.innerHTML = rawDescription;
         const cleanElement = tempElement.textContent;
         posts.push({
@@ -42,9 +44,8 @@ const fetchRss = (url) => {
     })
     .catch((error) => {
       console.error("Ошибка запроса", error);
-      throw error;
+      throw new Error(error);
     });
 };
-
 
 export default fetchRss;
