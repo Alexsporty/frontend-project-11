@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 const TODO_ITEMS = [
   'buy some cheese',
   'feed the cat',
-  'book a doctors appointment'
+  'book a doctors appointment',
 ]
 
 test.describe('New Todo', () => {
@@ -22,7 +22,7 @@ test.describe('New Todo', () => {
 
     // Make sure the list only has one todo item.
     await expect(page.getByTestId('todo-title')).toHaveText([
-      TODO_ITEMS[0]
+      TODO_ITEMS[0],
     ])
 
     // Create 2nd todo.
@@ -32,7 +32,7 @@ test.describe('New Todo', () => {
     // Make sure the list now has two todo items.
     await expect(page.getByTestId('todo-title')).toHaveText([
       TODO_ITEMS[0],
-      TODO_ITEMS[1]
+      TODO_ITEMS[1],
     ])
 
     await checkNumberOfTodosInLocalStorage(page, 2)
@@ -147,8 +147,8 @@ test.describe('Item', () => {
   })
 
   test('should allow me to un-mark items as complete', async ({ page }) => {
-     // create a new todo locator
-     const newTodo = page.getByPlaceholder('What needs to be done?')
+      // create a new todo locator
+      const newTodo = page.getByPlaceholder('What needs to be done?')
 
     // Create two items.
     for (const item of TODO_ITEMS.slice(0, 2)) {
@@ -185,7 +185,7 @@ test.describe('Item', () => {
     await expect(todoItems).toHaveText([
       TODO_ITEMS[0],
       'buy some sausages',
-      TODO_ITEMS[2]
+      TODO_ITEMS[2],
     ])
     await checkTodosInLocalStorage(page, 'buy some sausages')
   })
@@ -393,7 +393,7 @@ test.describe('Routing', () => {
   test('should highlight the currently applied filter', async ({ page }) => {
     await expect(page.getByRole('link', { name: 'All' })).toHaveClass('selected')
 
-    //create locators for active and completed links
+    // create locators for active and completed links
     const activeLink = page.getByRole('link', { name: 'Active' })
     const completedLink = page.getByRole('link', { name: 'Completed' })
     await activeLink.click()
@@ -421,8 +421,8 @@ async function createDefaultTodos(page) {
  * @param {import('@playwright/test').Page} page
  * @param {number} expected
  */
- async function checkNumberOfTodosInLocalStorage(page, expected) {
-  return await page.waitForFunction(e => {
+async function checkNumberOfTodosInLocalStorage(page, expected) {
+  return await page.waitForFunction((e) => {
     return JSON.parse(localStorage['react-todos']).length === e
   }, expected)
 }
@@ -431,8 +431,8 @@ async function createDefaultTodos(page) {
  * @param {import('@playwright/test').Page} page
  * @param {number} expected
  */
- async function checkNumberOfCompletedTodosInLocalStorage(page, expected) {
-  return await page.waitForFunction(e => {
+async function checkNumberOfCompletedTodosInLocalStorage(page, expected) {
+  return await page.waitForFunction((e) => {
     return JSON.parse(localStorage['react-todos']).filter(i => i.completed).length === e
   }, expected)
 }
@@ -442,7 +442,7 @@ async function createDefaultTodos(page) {
  * @param {string} title
  */
 async function checkTodosInLocalStorage(page, title) {
-  return await page.waitForFunction(t => {
+  return await page.waitForFunction((t) => {
     return JSON.parse(localStorage['react-todos']).map(i => i.title).includes(t)
   }, title)
 }

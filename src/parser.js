@@ -4,11 +4,11 @@ const parser = new DOMParser()
 const generateId = () =>
   Date.now().toString() + Math.random().toString(36).slice(2, 9)
 
-const fetchRss = url => {
+const fetchRss = (url) => {
   const proxyUrl = `https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`
   return axios
     .get(proxyUrl)
-    .then(response => {
+    .then((response) => {
       const xmlString = response.data.contents
       const doc = parser.parseFromString(xmlString, 'application/xml')
       const channel = doc.querySelector('channel')
@@ -26,7 +26,7 @@ const fetchRss = url => {
 
       const posts = []
       const items = doc.querySelectorAll('item')
-      items.forEach(item => {
+      items.forEach((item) => {
         const rawDescription = item.querySelector('description').textContent
         const tempElement = document.createElement('div')
         tempElement.innerHTML = rawDescription
@@ -40,7 +40,7 @@ const fetchRss = url => {
       })
       return { feed, posts }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Ошибка запроса', error)
       if (axios.isAxiosError?.(error)) {
         throw new Error('network')

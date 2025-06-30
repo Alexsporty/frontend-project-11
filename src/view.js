@@ -13,7 +13,8 @@ const render = (elements, state) => {
         feedback.textContent = i18next.t(`errors.${error}`)
         feedback.classList.remove('text-success')
         feedback.classList.add('text-danger')
-      } else {
+      } 
+      else {
         feedback.textContent = i18next.t('messages.success')
         feedback.classList.remove('text-danger')
         feedback.classList.add('text-success')
@@ -22,7 +23,7 @@ const render = (elements, state) => {
     if (path === 'feeds') {
       const feedsContainer = elements.feeds
       feedsContainer.innerHTML = ''
-      value.forEach(feed => {
+      value.forEach((feed) => {
         const feedElem = document.createElement('div')
         feedElem.innerHTML = `<h3>${feed.title}</h3><p>${feed.description}</p>`
         feedsContainer.appendChild(feedElem)
@@ -31,13 +32,13 @@ const render = (elements, state) => {
     if (path === 'posts') {
       const postsContainer = elements.posts
       postsContainer.innerHTML = ''
-      value.forEach(post => {
+      value.forEach((post) => {
         const postItem = document.createElement('li')
         postItem.classList.add(
           'list-group-item',
           'd-flex',
           'justify-content-between',
-          'align-items-start'
+          'align-items-start',
         )
 
         const link = document.createElement('a')
@@ -55,7 +56,7 @@ const render = (elements, state) => {
         previewBtn.setAttribute('data-id', post.id)
         previewBtn.setAttribute('type', 'button')
 
-        previewBtn.addEventListener('click', e => {
+        previewBtn.addEventListener('click', (e) => {
           e.preventDefault()
           const { id } = e.target.dataset
           const post = watchedState.posts.find(p => p.id === id)

@@ -11,7 +11,7 @@ const validateUrl = (url, feeds) => {
       .required('required')
       .notOneOf(existingUrl, 'duplicate'),
   })
-  return rssSchema.validate({ url: normalizedInput }).catch(err => {
+  return rssSchema.validate({ url: normalizedInput }).catch((err) => {
     throw new Error(err.errors[0])
   })
 }
