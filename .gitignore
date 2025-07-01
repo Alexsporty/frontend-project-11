@@ -1,6 +1,5 @@
 node_modules
-tests
-tests-examples
+
 # Playwright
 /test-results/
 /playwright-report/
