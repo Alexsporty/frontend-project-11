@@ -9,6 +9,11 @@ const gitIgnorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 const eslintIgnorePath = fileURLToPath(new URL('.eslintignore', import.meta.url))
 
 export default defineConfig([
+  {
+    ignores: [
+      'playwright.config.js',
+    ],
+  },
   includeIgnoreFile(gitIgnorePath),
   includeIgnoreFile(eslintIgnorePath),
   stylistic.configs.recommended,
