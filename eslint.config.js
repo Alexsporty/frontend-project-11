@@ -12,6 +12,8 @@ export default defineConfig([
   {
     ignores: [
       'playwright.config.js',
+      'tests',
+      'tests-examples'
     ],
   },
   includeIgnoreFile(gitIgnorePath),
