@@ -6,4 +6,3 @@ export const state = {
     readPostId: new Set(),
   },
 }
-console.log(state)
