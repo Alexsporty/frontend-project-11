@@ -13,7 +13,7 @@ export default defineConfig([
     ignores: [
       'playwright.config.js',
       'tests',
-      'tests-examples'
+      'tests-examples',
     ],
   },
   includeIgnoreFile(gitIgnorePath),
